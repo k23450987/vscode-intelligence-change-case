@@ -48,6 +48,24 @@ export function changeCase() {
   });
 }
 
+export function changeLowerUpperCase() {
+  if (vscode.window.activeTextEditor == null) return;
+  const { document, selections } = vscode.window.activeTextEditor;
+  vscode.window.activeTextEditor.edit((editBuilder) => {
+    selections.forEach((selection) => {
+      if (!selection.isSingleLine) {
+        return;
+      }
+      const range = selection.isEmpty
+        ? document.getWordRangeAtPosition(selection.active)
+        : selection;
+      if (range == null) return;
+      const text = document.getText(range);
+      editBuilder.replace(range, handleChangeLowerUpperCase(text));
+    });
+  });
+}
+
 function changeWordCase(word: string, cases: CaseFunc[]): string {
   let nextCased: string | undefined;
   for (let index = cases.length - 1; index >= 0; index--) {
@@ -60,4 +78,10 @@ function changeWordCase(word: string, cases: CaseFunc[]): string {
     nextCased = currCased;
   }
   return nextCased ?? cases[0](word);
+}
+
+function handleChangeLowerUpperCase(word: string): string {
+  const lower = word.toLowerCase();
+  const upper = word.toUpperCase();
+  return word === lower ? upper : lower;
 }

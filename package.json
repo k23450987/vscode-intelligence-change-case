@@ -2,9 +2,9 @@
     "name": "intelligence-change-case",
     "displayName": "change-case",
     "description": "Intelligence change case.",
-    "version": "1.2.0",
-    "repository": "https://github.com/zhengxiaoyao0716/vscode-intelligence-change-case",
-    "publisher": "zhengxiaoyao0716",
+    "version": "1.3.0",
+    "repository": "https://github.com/k23450987/vscode-intelligence-change-case",
+    "publisher": "k23450987",
     "engines": {
         "vscode": "^1.74.0"
     },
@@ -18,6 +18,10 @@
             {
                 "command": "extension.changeCase",
                 "title": "Intelligence change case."
+            },
+            {
+                "command": "extension.changeLowerUpperCase",
+                "title": "Intelligence change lower upper case."
             }
         ],
         "keybindings": {
@@ -121,6 +125,7 @@
         "typescript": "^5.0.4"
     },
     "dependencies": {
-        "change-case": "^4.1.2"
+        "change-case": "^4.1.2",
+        "vsce": "^2.15.0"
     }
 }
