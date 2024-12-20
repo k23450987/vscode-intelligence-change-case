@@ -24,11 +24,18 @@
                 "title": "Intelligence change lower upper case."
             }
         ],
-        "keybindings": {
-            "key": "Ctrl+U",
-            "command": "extension.changeCase",
-            "when": "editorTextFocus"
-        },
+        "keybindings": [
+            {
+                "key": "Ctrl+U",
+                "command": "extension.changeCase",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "Ctrl+Shift+U",
+                "command": "extension.changeLowerUpperCase",
+                "when": "editorTextFocus"
+            }
+        ],
         "configuration": {
             "title": "Intelligence change case settings.",
             "properties": {
